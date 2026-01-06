@@ -1,10 +1,10 @@
+import NavBar from "./NavBar"
 
 function App() {
   return (
     <>
-      
-       
-      <h1 className="bg-amber-500">Hello</h1>
+    <NavBar />
+    <h1 className="bg-amber-500">Hello</h1>
       
    
     </>
