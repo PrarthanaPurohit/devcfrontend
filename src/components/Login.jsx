@@ -14,6 +14,7 @@ const Login = () => {
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
+    const [error, setError ] = useState("");
 
     const handleLogin = async () => {
       
@@ -28,7 +29,7 @@ const Login = () => {
       
         }
         catch(error)  {
-            console.log("Login Failed", error);
+            setError(error?.response?.data || "Something went wrong");
         };
 
     }
@@ -50,6 +51,7 @@ const Login = () => {
          placeholder="Password" 
          onChange={(e) => setPassword(e.target.value)}/>
 
+        <p className="text-red-700">{error}</p>
         <button
         onClick={handleLogin}
         className="btn btn-neutral mt-4">Login</button>
