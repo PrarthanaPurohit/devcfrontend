@@ -1,9 +1,24 @@
 import React from 'react'
+import axios from 'axios';
+import {BASE_URL} from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { removeFeed } from '../utils/feedSlice';
 
 const UserCard = ({ user }) => {
-  if (!user) return null;
-  const { firstName, lastName, age, gender, about, photoUrl, skills = [] } = user;
+  const dispatch = useDispatch();
 
+  if (!user) return null;
+  const { firstName, lastName, age, gender, about, photoUrl, skills, _id = [] } = user;
+
+  // Handle accept or reject req
+  const handleSendRequest = async (status, userId) => {
+    try{
+      const res = axios.post(BASE_URL + "/request/send/" + status + "/" + userId, {},{withCredentials: true})
+      dispatch(removeFeed(userId)) //remove current card
+    }catch(err){
+      console.log(err)
+    }
+  }
   return (
     <div className="hover-3d flex justify-center m-10">
       <div className="hover-3d w-96 bg-base-200 p-5 rounded-2xl shadow-xl">
@@ -47,10 +62,14 @@ const UserCard = ({ user }) => {
 
           {/* Action Buttons */}
           <div className="mt-3 flex gap-2">
-            <button className="btn btn-primary btn-sm w-1/2">
+            <button 
+            onClick={() => handleSendRequest("interested", _id)}
+            className="btn btn-primary btn-sm w-1/2">
               Connect
             </button>
-            <button className="btn btn-outline btn-sm w-1/2">
+            <button 
+            onClick= {() => handleSendRequest("ignored", _id)}
+             className="btn btn-outline btn-sm w-1/2">
               Ignore
             </button>
           </div>
