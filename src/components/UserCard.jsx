@@ -4,7 +4,7 @@ const UserCard = ({ user }) => {
   const { firstName, lastName, age, gender, about, photoUrl, skills = [] } = user;
 
   return (
-    <div className="flex justify-center m-10">
+    <div className="hover-3d flex justify-center m-10">
       <div className="hover-3d w-96 bg-base-200 p-5 rounded-2xl shadow-xl">
 
         {/* Profile Image */}
@@ -21,7 +21,7 @@ const UserCard = ({ user }) => {
         <div></div><div></div><div></div><div></div>
 
         {/* Content */}
-        <div className="space-y-2">
+        <div className="space-y-2 mx-4 px-1 py-1">
           <h2 className="text-xl font-bold">
             {firstName} {lastName}
           </h2>
