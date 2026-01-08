@@ -1,6 +1,7 @@
 import React from 'react'
 
 const UserCard = ({ user }) => {
+  if (!user) return null;
   const { firstName, lastName, age, gender, about, photoUrl, skills = [] } = user;
 
   return (
