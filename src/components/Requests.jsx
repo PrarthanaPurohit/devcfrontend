@@ -26,13 +26,13 @@ const Requests = () => {
   }, []);
 
   if (requests.length === 0) {
-    return <h1>No connections found</h1>;
+    return <h1>No request found</h1>;
   }
   if (!requests) return <h1>Loading...</h1>;
 
   return (
     <div className="text-center my-10">
-      <h1 className="text-2xl text-bold">Connections</h1>
+      <h1 className="text-2xl text-bold">Pending requests</h1>
 
       {requests.map((req) => {
         const { firstName, lastName, age, gender, about, photoUrl } =
