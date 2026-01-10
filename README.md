@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DevConnect Frontend
 
 A modern React-based frontend application for a developer networking platform built with Vite, React, Redux Toolkit, and Tailwind CSS.
