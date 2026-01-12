@@ -58,55 +58,99 @@ const Login = () => {
   return (
     <>
     <div className="flex justify-center m-16 p-6">
-      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+      <fieldset
+  className="
+    w-xs p-7 rounded-2xl
+    bg-white/90
+    backdrop-blur-xl
+    border border-emerald-900/10
+    shadow-[0_25px_60px_rgba(0,0,0,0.35)]
+    text-[#0f2a23]
+  "
+>
+
+
         {!isLoginForm && (
           <>
-            <label className="label">First Name</label>
+            <label className="label text-sm font-medium text-emerald-900">First Name</label>
             <input
               type="text"
               value={firstName}
-              className="input"
+              className="input w-full rounded-xl
+  bg-white
+  border border-emerald-900/20
+  text-[#0f2a23]
+  placeholder:text-slate-400
+  focus:outline-none
+  focus:border-emerald-600
+  focus:ring-2 focus:ring-emerald-500/20"
               placeholder=""
               onChange={(e) => setFirstName(e.target.value)}
             />
 
-            <label className="label">Last Name</label>
+            <label className="label text-sm font-medium text-emerald-900">Last Name</label>
             <input
               type="text"
               value={lastName}
-              className="input"
+              className="input w-full rounded-xl
+  bg-white
+  border border-emerald-900/20
+  text-[#0f2a23]
+  placeholder:text-slate-400
+  focus:outline-none
+  focus:border-emerald-600
+  focus:ring-2 focus:ring-emerald-500/20"
               placeholder=""
               onChange={(e) => setLastName(e.target.value)}
             />
           </>
         )}
 
-        <label className="label">Email</label>
+        <label className="label text-sm font-medium text-emerald-900">Email</label>
         <input
           type="email"
           value={emailId}
-          className="input"
+          className="input w-full rounded-xl
+  bg-white
+  border border-emerald-900/20
+  text-[#0f2a23]
+  placeholder:text-slate-400
+  focus:outline-none
+  focus:border-emerald-600
+  focus:ring-2 focus:ring-emerald-500/20"
           placeholder=""
           onChange={(e) => setEmailId(e.target.value)}
         />
 
-        <label className="label">Password</label>
+        <label className="label text-sm font-medium text-emerald-900">Password</label>
         <input
-          type=""
+          type="password"
           value={password}
-          className="input"
+          className="input w-full rounded-xl
+  bg-white
+  border border-emerald-900/20
+  text-[#0f2a23]
+  placeholder:text-slate-400
+  focus:outline-none
+  focus:border-emerald-600
+  focus:ring-2 focus:ring-emerald-500/20"
           placeholder=""
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <p className="text-red-700">{error}</p>
+        <p className="text-red-500 text-sm mt-1">{error}</p>
 
         <button onClick={isLoginForm ? handleLogin : handleSignUp} 
-        className="btn btn-neutral mt-4">
+        className="btn mt-5 w-full rounded-xl
+    bg-gradient-to-r from-emerald-900 to-emerald-950
+    text-white font-semibold
+    hover:from-emerald-800 hover:to-emerald-900
+    transition-all duration-200">
           {isLoginForm ? "Login" : "Sign Up"}
         </button>
 
-        <p className="text-blue-900 text-bold text-sm cursor-pointer hover:underline" 
+        <p className="text-emerald-700 text-sm text-center mt-4
+    cursor-pointer hover:text-emerald-900 hover:underline" 
         onClick={() => setIsLoginForm((value) => !value)}>{isLoginForm ? "New user? Sign up now." : "Go to login"}</p>
 
       </fieldset>

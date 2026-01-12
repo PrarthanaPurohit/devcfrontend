@@ -19,70 +19,104 @@ const UserCard = ({ user }) => {
       console.log(err)
     }
   }
-  return (
-    <div className="hover-3d flex justify-center m-10">
-      <div className="hover-3d w-96 h-130 bg-base-200 p-5 rounded-2xl shadow-xl flex flex-col ">
+return (
+  <div className="hover-3d flex justify-center m-10">
+    <div
+      className="
+        hover-3d w-96 h-130
+        bg-white/95
+        backdrop-blur-xl
+        p-4
+        rounded-3xl
+        shadow-[0_25px_60px_rgba(0,0,0,0.25)]
+        flex flex-col
+        border border-black/10
+        text-[#0f2a23]
+      "
+    >
+      {/* Profile Image */}
+      <figure className="w-full rounded-2xl overflow-hidden mb-4">
+        <img
+          src={photoUrl}
+          alt={firstName}
+          className="w-full h-60 object-cover"
+        />
+      </figure>
 
+      {/* 8 divs for 3D effect */}
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
 
-        {/* Profile Image */}
-        <figure className="w-full rounded-2xl overflow-hidden mb-4">
-          <img
-            src={photoUrl}
-            alt={firstName}
-            className="w-full h-60 object-cover"
-          />
-        </figure>
+      {/* Content */}
+      <div className="space-y-2 px-8 py-2 mt-2 flex flex-col flex-1">
+        {/* 👆 padding restored */}
 
-        {/* 8 divs for 3D effect */}
-        <div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div>
+        <h2 className="text-xl font-semibold">
+          {firstName} {lastName}
+        </h2>
 
-        {/* Content */}
-        <div className="space-y-2 mx-4 px-1 py-1 mt-4 flex flex-col flex-1">
+        <p className="text-sm text-slate-600">
+          {gender} • {age} years
+        </p>
 
-          <h2 className="text-xl font-bold mx-4">
-            {firstName} {lastName}
-          </h2>
+        <p className="text-sm text-slate-700 line-clamp-3">
+          {about}
+        </p>
 
-          <p className="text-sm mx-4 opacity-70">
-            {gender} • {age} years
-          </p>
+        {/* Skills */}
+        <div className="flex flex-wrap gap-2 mt-2">
+          {skills.map((skill, i) => (
+            <span
+              key={i}
+              className="
+                px-3 py-1 text-xs font-medium
+                rounded-full
+                bg-slate-100
+                text-slate-700
+                border border-slate-200
+              "
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
 
-          <p className="mx-4 text-sm line-clamp-3">
-  {about}
-</p>
+        {/* Action Buttons */}
+        <div className="mt-auto flex justify-between gap-4 pt-4">
+          <button
+            onClick={() => handleSendRequest('interested', _id)}
+            className="
+              w-1/2 py-2  text-sm font-medium
+              rounded-xl
+              bg-[#020617]
+              text-white
+              hover:bg-[#0f172a]
+              transition
+            "
+          >
+            Connect
+          </button>
 
-
-          {/* Skills */}
-          <div className="flex flex-wrap gap-2 mt-2 mx-4">
-            {skills.map((skill, i) => (
-              <span
-                key={i}
-                className="badge badge-neutral"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-
-          {/* Action Buttons */}
-          <div className="mt-auto flex justify-between items-center gap-4 mx-4 mb-2">
-
-            <button 
-            onClick={() => handleSendRequest("interested", _id)}
-            className="btn btn-primary btn-sm w-1/2">
-              Connect
-            </button>
-            <button 
-            onClick= {() => handleSendRequest("ignored", _id)}
-             className="btn btn-outline btn-sm w-1/2">
-              Ignore
-            </button>
-          </div>
+          <button
+            onClick={() => handleSendRequest('ignored', _id)}
+            className="
+              w-1/2 py-2 text-sm font-medium
+              rounded-xl
+              border border-slate-300
+              text-slate-700
+              hover:bg-slate-100
+              transition
+            "
+          >
+            Ignore
+          </button>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
+
+
+}
 
 export default UserCard;

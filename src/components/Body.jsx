@@ -43,7 +43,13 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
+    <div className="
+  min-h-screen
+  bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(34,197,94,0.18),transparent_45%),linear-gradient(135deg,#071814,#0f2a23,#071814)]
+  text-[#f4f7f6]
+">
+
+
       <NavBar />
       <Outlet /> {/* Render child routes here */}
       <Footer />

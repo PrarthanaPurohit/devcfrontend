@@ -1,2 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+.nav-link {
+  @apply text-[#cbd5d1] hover:text-emerald-300 transition font-medium;
+}

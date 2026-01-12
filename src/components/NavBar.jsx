@@ -28,53 +28,82 @@ const NavBar = () => {
   }
 
   return (
-    <div className="navbar bg-base-300 shadow-sm">
-      <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">DevConnect</Link>
-      </div>
-      <div className="flex  gap-2">
-        <div className="dropdown dropdown-end mx-5 ">
-        
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            {user && (
-              <div>
-              <div className="w-10 rounded-full">
-              <img
-                alt="user photo"
-                src={user.photoUrl}
-              /></div>
-            </div>)}
+    <div className="navbar px-6 bg-white/5 backdrop-blur-xl border-b border-white/10">
+  {/* Logo */}
+  <div className="flex-1">
+    <Link
+      to="/"
+      className="text-xl font-semibold text-[#f4f7f6] hover:text-emerald-300 transition"
+    >
+      DevConnect
+    </Link>
+  </div>
+
+  {/* Header Links */}
+  <div className="flex items-center gap-6">
+    <Link
+      to="/connections"
+      className="text-[#cbd5d1] hover:text-emerald-300 font-medium transition"
+    >
+      Connections
+    </Link>
+
+    <Link
+      to="/requests"
+      className="text-[#cbd5d1] hover:text-emerald-300 font-medium transition"
+    >
+      Requests
+    </Link>
+
+    {/* Profile Dropdown */}
+    {user && (
+      <div className="dropdown dropdown-end ml-2">
+        <div
+          tabIndex={0}
+          role="button"
+          className="btn btn-ghost btn-circle avatar"
+        >
+          <div className="w-10 rounded-full">
+            <img src={user.photoUrl} alt="user" />
           </div>
-          <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <Link to="/profile" className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/connections">Connections</Link>
-            </li>
-            <li>
-              <Link to="/requests">Requests</Link>
-            </li>
-            <li>
-              <Link to="/premium">Premium membership</Link>
-            </li>
-            <li>
-              <a onClick={handleLogout}>Logout</a>
-            </li>
-          </ul>
         </div>
+
+        <ul
+          tabIndex={0}
+          className="
+            dropdown-content mt-3 w-48 p-2
+            bg-white/90 backdrop-blur-xl
+            rounded-xl shadow-xl
+            border border-emerald-900/10
+            text-[#0f2a23]
+          "
+        >
+          <li>
+            <Link to="/profile" className="rounded-lg hover:bg-emerald-100">
+              Edit Profile
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/premium" className="rounded-lg hover:bg-emerald-100">
+              Premium
+            </Link>
+          </li>
+
+          <li>
+            <button
+              onClick={handleLogout}
+              className="text-red-600 hover:bg-red-50 rounded-lg"
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
       </div>
-    </div>
+    )}
+  </div>
+</div>
+
   );
 };
 
