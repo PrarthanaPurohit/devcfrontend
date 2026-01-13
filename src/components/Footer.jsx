@@ -5,7 +5,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className=" fixed bottom-0 w-full mt-24 h-[72px] pb-[72px]
+    <footer className="  w-full mt-24 h-[72px] pb-[72px]
 
         bg-base-300
         backdrop-blur-xl
