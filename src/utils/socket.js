@@ -7,8 +7,7 @@ export const createSocketConnection = () => {
       withCredentials: true, // ✅ MUST
     });
   } else {
-    return io("/", {
-      path: "/api/socket.io",
+    return io("https://devconnectbackend-aryy.onrender.com", {
       withCredentials: true, // ✅ MUST
     });
   }
