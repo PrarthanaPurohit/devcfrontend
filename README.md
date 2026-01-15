@@ -10,7 +10,7 @@ A modern React-based frontend application for a developer networking platform bu
 - Connection requests management
 - View connections
 - Premium membership features
-- Real-time features with Socket.io
+- **Real-time Chat**: 1-on-1 messaging with live updates using Socket.io
 - Responsive UI with DaisyUI components
 
 ## Tech Stack
@@ -129,6 +129,7 @@ src/
 - `/connections` - View connections
 - `/requests` - Manage connection requests
 - `/premium` - Premium features
+- `/chat/:targetUserId` - 1-on-1 Chat interface
 
 ## API Integration
 
