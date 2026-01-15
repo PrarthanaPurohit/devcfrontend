@@ -31,16 +31,24 @@ const EditProfile = ({ user }) => {
         setShowToast(false);
       }, 3000);
     } catch (err) {
-      setError(err.response.data);
+      console.error(err);
+
+      const message =
+        err?.response?.data?.message ||
+        err?.response?.data ||
+        err.message ||
+        "Something went wrong";
+
+      setError(message);
     }
   };
 
- return (
-  <>
-    <div className="flex justify-center">
-      <div className="flex justify-center m-4 p-6">
-        <fieldset
-          className="
+  return (
+    <>
+      <div className="flex justify-center">
+        <div className="flex justify-center m-4 p-6">
+          <fieldset
+            className="
             w-xs p-6
             rounded-3xl
             bg-white/90
@@ -49,75 +57,75 @@ const EditProfile = ({ user }) => {
             shadow-[0_25px_60px_rgba(0,0,0,0.25)]
             text-[#1f2937]
           "
-        >
-          <label className="label text-sm font-medium text-slate-700">
-            First Name
-          </label>
-          <input
-            type="text"
-            value={firstName}
-            className="
+          >
+            <label className="label text-sm font-medium text-slate-700">
+              First Name
+            </label>
+            <input
+              type="text"
+              value={firstName}
+              className="
               input w-full
               bg-[#f8fafc]
               border border-slate-300
               text-slate-800
               focus:outline-none focus:border-slate-500
             "
-            placeholder="First name"
-            onChange={(e) => setFirstName(e.target.value)}
-          />
+              placeholder="First name"
+              onChange={(e) => setFirstName(e.target.value)}
+            />
 
-          <label className="label text-sm font-medium text-slate-700">
-            Last Name
-          </label>
-          <input
-            type="text"
-            value={lastName}
-            className="
+            <label className="label text-sm font-medium text-slate-700">
+              Last Name
+            </label>
+            <input
+              type="text"
+              value={lastName}
+              className="
               input w-full
               bg-[#f8fafc]
               border border-slate-300
               text-slate-800
               focus:outline-none focus:border-slate-500
             "
-            placeholder="Last name"
-            onChange={(e) => setLastName(e.target.value)}
-          />
+              placeholder="Last name"
+              onChange={(e) => setLastName(e.target.value)}
+            />
 
-          <label className="label text-sm font-medium text-slate-700">
-            About
-          </label>
-          <textarea
-            value={about}
-            placeholder="About"
-            className="
+            <label className="label text-sm font-medium text-slate-700">
+              About
+            </label>
+            <textarea
+              value={about}
+              placeholder="About"
+              className="
               textarea w-full resize-none
               bg-[#f8fafc]
               border border-slate-300
               text-slate-800
               focus:outline-none focus:border-slate-500
             "
-            rows={3}
-            style={{ maxHeight: "120px" }}
-            onChange={(e) => setAbout(e.target.value)}
-            onInput={(e) => {
-              e.target.style.height = "auto";
-              const maxHeight = 120;
-              e.target.style.height =
-                e.target.scrollHeight > maxHeight
-                  ? `${maxHeight}px`
-                  : `${e.target.scrollHeight}px`;
-            }}
-          />
+              rows={3}
+              style={{ maxHeight: "120px" }}
+              onChange={(e) => setAbout(e.target.value)}
+              onInput={(e) => {
+                e.target.style.height = "auto";
+                const maxHeight = 120;
+                e.target.style.height =
+                  e.target.scrollHeight > maxHeight
+                    ? `${maxHeight}px`
+                    : `${e.target.scrollHeight}px`;
+              }}
+            />
 
-          <label className="label text-sm font-medium text-slate-700 ">
-            Gender
-          </label>
-          <div className="join py-1.5 ">
-            {["Male", "Female", "Other"].map((g) => (
-              <input
-                key={g}
-                className="
+            <label className="label text-sm font-medium text-slate-700 ">
+              Gender
+            </label>
+            <div className="join py-1.5 ">
+              {["Male", "Female", "Other"].map((g) => (
+                <input
+                  key={g}
+                  className="
                   join-item btn
                   bg-[#f8fafc] rounded-xl 
                   border border-slate-300
@@ -125,55 +133,55 @@ const EditProfile = ({ user }) => {
                   checked:bg-[#494b51]
                   checked:text-white
                 "
-                type="radio"
-                name="gender"
-                aria-label={g}
-                value={g}
-                checked={gender === g}
-                onChange={(e) => setGender(e.target.value)}
-              />
-            ))}
-          </div>
+                  type="radio"
+                  name="gender"
+                  aria-label={g}
+                  value={g}
+                  checked={gender === g}
+                  onChange={(e) => setGender(e.target.value)}
+                />
+              ))}
+            </div>
 
-          <label className="label text-sm font-medium text-slate-700">
-            Age
-          </label>
-          <input
-            type="text"
-            value={age}
-            className="
+            <label className="label text-sm font-medium text-slate-700">
+              Age
+            </label>
+            <input
+              type="text"
+              value={age}
+              className="
               input w-full
               bg-[#f8fafc]
               border border-slate-300
               text-slate-800
               focus:outline-none focus:border-slate-500
             "
-            placeholder="Age"
-            onChange={(e) => setAge(e.target.value)}
-          />
+              placeholder="Age"
+              onChange={(e) => setAge(e.target.value)}
+            />
 
-          <label className="label text-sm font-medium text-slate-700">
-            Photo URL
-          </label>
-          <input
-            type="text"
-            value={photoUrl}
-            className="
+            <label className="label text-sm font-medium text-slate-700">
+              Photo URL
+            </label>
+            <input
+              type="text"
+              value={photoUrl}
+              className="
               input w-full
               bg-[#f8fafc]
               border border-slate-300
               text-slate-800
               focus:outline-none focus:border-slate-500
             "
-            placeholder="Photo URL"
-            onChange={(e) => setPhotoUrl(e.target.value)}
-          />
+              placeholder="Photo URL"
+              onChange={(e) => setPhotoUrl(e.target.value)}
+            />
 
-          <p className="text-red-600 text-sm mt-1">{error}</p>
+            <p className="text-red-600 text-sm mt-1">{error}</p>
 
-          <button
-            onClick={saveProfile}
-            className="
+            <button
+              onClick={saveProfile}
+              className="
               mt-4 w-full py-2
               rounded-xl
               bg-[#2c2d30]
@@ -181,27 +189,26 @@ const EditProfile = ({ user }) => {
               hover:bg-[#1a1c1f]
               transition
             "
-          >
-            Save
-          </button>
-        </fieldset>
-      </div>
-
-      <UserCard
-        user={{ firstName, lastName, about, age, gender, photoUrl }}
-      />
-    </div>
-
-    {showToast && (
-      <div className="toast toast-top toast-center">
-        <div className="alert bg-[#020617] text-white shadow-xl">
-          <span>Profile saved successfully.</span>
+            >
+              Save
+            </button>
+          </fieldset>
         </div>
-      </div>
-    )}
-  </>
-);
 
+        <UserCard
+          user={{ firstName, lastName, about, age, gender, photoUrl }}
+        />
+      </div>
+
+      {showToast && (
+        <div className="toast toast-top toast-center">
+          <div className="alert bg-[#020617] text-white shadow-xl">
+            <span>Profile saved successfully.</span>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default EditProfile;
